@@ -1,0 +1,114 @@
+#======================================#
+#========== Project settings ==========#
+#======================================#
+
+# 产品或项目名称、软件开发公司名称
+productName: redwood
+companyName: laymat
+
+# 产品版本 版权年份
+productVersion: V0.1
+copyrightYear: 2018
+
+#是否演示模式
+demoMode: false
+
+#======================================#
+#========== Server settings ===========#
+#======================================#
+server:
+  port: 8800
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+
+#======================================#
+#========== Spring settings ===========#
+#======================================#
+spring:
+
+  # 应用程序名称
+  application:
+    name: laymat
+
+  # 当前环境名称（注意：不可设置为 test 它是单元测试专用的名称）
+  profiles:
+    active: default
+
+  #  resources:
+  #    #静态资源扫描
+  #    static-locations: classpath:/resources/
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/redwood_core
+    username: root
+    password: 123
+    testSql: SELECT 1
+
+  thymeleaf:
+    # 这个是配置模板路径的，默认是templates
+    prefix: classpath:/templates/
+    suffix: .ftl
+    # 模板的模式
+    #spring.thymeleaf.mode的默认值是HTML5，其实是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求。
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    # 这个开发配置为false，避免改了模板还要重启服务器
+    cache: false
+    enabled: true
+    servlet:
+      content-type: text/html
+  # 启用热发布
+  devtools:
+    livereload:
+      enabled: true
+      # data:
+      #mongodb:
+      #uri: mongodb://u_taishan:pw123456@127.0.0.1:27017/db_taishan01
+
+  # Redis 连接参数 （RedisProperties）
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    ssl: false
+    database: 3
+    password: l123
+    timeout: 2000
+
+  mybatis:
+    #    type-aliases-package: com.example.domain.model
+    #    type-handlers-package: com.example.typehandler
+    configuration:
+      map-underscore-to-camel-case: false
+      default-fetch-size: 100
+      default-statement-timeout: 30
+      logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    deserialization:
+      #允许对象忽略json中不存在的属性
+      fail-on-unknown-properties: false
+
+  #
+  #======================================#
+  #========== System settings ===========#
+  #======================================#
+  mvc:
+    view:
+      prefix: /static/
+      suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+logging:
+  path: logs/
+  level:
+    cmp.core.dao: DEBUG
+    cmp.protal.web: DEBUG
+    root: INFO
