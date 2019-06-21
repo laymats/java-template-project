@@ -15,22 +15,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@SpringBootApplication
-@RestController
-public class OrderHandleApplication {
-    public class ServletInitializer extends SpringBootServletInitializer {
-        @Override
-        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-            return application.sources(OrderHandleApplication.class);
-        }
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(OrderHandleApplication.class, args);
-
-
-    }
-
-}
-
+//@SpringBootApplication
+//@RestController
+//public class OrderHandleApplication {
+//    public class ServletInitializer extends SpringBootServletInitializer {
+//        @Override
+//        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//            return application.sources(OrderHandleApplication.class);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        SpringApplication.run(OrderHandleApplication.class, args);
+//
+//
+//    }
+//
+//}
+//
 
