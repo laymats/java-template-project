@@ -12,7 +12,7 @@ import java.util.concurrent.*;
 @Service
 public class RequestMerge {
     protected Logger logger = LoggerFactory.getLogger(getClass());
-    protected LinkedBlockingQueue<SimpleRequest> simpleRequestBlockingDeque = new LinkedBlockingQueue<>();
+    protected LinkedBlockingQueue<SimpleRequest> simpleRequestLinkedBlockingQueue = new LinkedBlockingQueue<>();
 
     @Data
     protected class SimpleRequest {
@@ -24,7 +24,7 @@ public class RequestMerge {
     protected void init() {
         var scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(1);
         scheduledThreadPoolExecutor.scheduleAtFixedRate(() -> {
-            var size = simpleRequestBlockingDeque.size();
+            var size = simpleRequestLinkedBlockingQueue.size();
             if (size == 0) return;
 
             /**
@@ -34,7 +34,7 @@ public class RequestMerge {
              */
             var requestList = new ArrayList<SimpleRequest>();
             for (var i = 0; i < size; i++) {
-                var request = simpleRequestBlockingDeque.poll();
+                var request = simpleRequestLinkedBlockingQueue.poll();
 
                 //根据算法返回结果
                 if (i % 5 == 0) {
@@ -69,7 +69,7 @@ public class RequestMerge {
         /**
          * 添加到异步处理队列
          */
-        simpleRequestBlockingDeque.add(request);
+        simpleRequestLinkedBlockingQueue.add(request);
         /**
          * 等待异步返回
          */
