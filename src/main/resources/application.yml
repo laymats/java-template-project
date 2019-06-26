@@ -47,27 +47,6 @@ spring:
     password: 123
     testSql: SELECT 1
 
-  thymeleaf:
-    # 这个是配置模板路径的，默认是templates
-    prefix: classpath:/templates/
-    suffix: .ftl
-    # 模板的模式
-    #spring.thymeleaf.mode的默认值是HTML5，其实是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求。
-    mode: LEGACYHTML5
-    encoding: UTF-8
-    # 这个开发配置为false，避免改了模板还要重启服务器
-    cache: false
-    enabled: true
-    servlet:
-      content-type: text/html
-  # 启用热发布
-  devtools:
-    livereload:
-      enabled: true
-      # data:
-      #mongodb:
-      #uri: mongodb://u_taishan:pw123456@127.0.0.1:27017/db_taishan01
-
   # Redis 连接参数 （RedisProperties）
   redis:
     host: 127.0.0.1
